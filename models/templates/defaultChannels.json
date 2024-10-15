@@ -1,0 +1,10 @@
+[
+    {
+        "name": "general",
+        "type": "text"
+    },
+    {
+        "name": "Conference | Main",
+        "type": "conference"
+    }
+]

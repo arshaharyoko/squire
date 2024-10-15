@@ -1,0 +1,554 @@
+:root {
+    --background-primary: #171010;
+    --background-secondary: #1d1515;
+    --background-tertiary: #281E15;
+    --text-primary: #c9c9c9;
+}
+
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html, body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    overflow: hidden;
+}
+
+button {
+    display: grid;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    color: var(--text-primary);
+    background-color: var(--background-tertiary);
+    border: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Font Families */
+@font-face {
+    font-family: "philosopherRegular";
+    src: url("/assets/fonts/philosopher/Philosopher-Regular.ttf")
+}
+
+@font-face {
+    font-family: "ubuntuRegular";
+    src: url("/assets/fonts/ubuntu/Ubuntu-Regular.ttf")
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Menu bar */
+.menubar {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-primary);
+    background-color: var(--background-primary);
+}
+
+.menubar .header {
+    display: flex;
+    padding: 1rem;
+}
+
+.menubar .header span {
+    cursor: pointer;
+}
+
+.menubar .menu {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    overflow-y: auto !important;
+}
+
+.menubar .menu .block {
+    padding: 1rem;
+    display: flex;
+    cursor: pointer;
+}
+
+/* Always adds weird extrusion effect to the block where it increases the width by 1px, i have not found a way to solve this terrible and perplexing issue */
+/* I HAVE FOUND THE WAY. TODO: Add min-width and max-width to sidebar */
+.menubar .menu .block:hover {
+    background-color: var(--background-tertiary);
+    border-left: 1px solid #ffffff;
+}
+
+.menubar .menu img {
+    width: 32px;
+    height: 32px;
+}
+
+.menubar .menu a {
+    flex-grow: 1;
+    align-self: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    padding: 0 0.3rem 0 0.3rem;
+}
+
+.menubar .footer {
+    display: contents;
+}
+
+.menubar .footer button {
+    margin: 0.5rem;
+    height: 1.5rem;
+}
+
+/* Channel Bar */
+.channel-bar {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    width: 10rem;
+    color: var(--text-primary);
+    background-color: var(--background-secondary);
+}
+
+.channel-bar form input {
+    color: var(--text-primary);
+    background-color: var(--background-tertiary);
+    font-family: philosopherRegular;
+    border: none;
+    outline: none;
+}
+
+.channel-bar form {
+    margin-block-end: 0 !important;
+    box-sizing: unset !important;
+}
+
+.channel-bar .ch-block {
+    padding-top: 1rem;
+}
+
+.channel-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-header #makeNewCategory {
+    cursor: pointer;
+    margin-top: 0.5rem;
+    text-align: center;
+    background-color: var(--background-tertiary);
+}
+
+.channel-header  a {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.channel-table {
+    overflow: auto;
+}
+
+.channel-table .ch-block #openChannelPanel {
+    cursor: pointer;
+    float: right;
+}
+
+.channel-table .cb-header {
+    font-size: 16px;
+    font-family: ubuntuRegular;
+}
+
+.channel-table .cb-channel {
+    display: flex;
+    margin: 0.5rem 0 0.5rem 0;
+    padding: 0.15rem 0 0.15rem 0;
+    font-family: ubuntuRegular;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.channel-table .cb-channel:hover {
+    background-color: var(--background-tertiary);
+}
+
+.channel-table .cb-channel i {
+    margin: 0.15rem;
+}
+
+.channel-table .cb-channel span {
+    margin-left: 0.2rem;
+}
+
+.channel-table .block:hover {
+    background-color: var(--background-primary);
+    border-right: 1px solid white;
+}
+
+.channel-table a {
+    flex-grow: 1;
+    align-self: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    padding: 0 0.3rem 0 0.3rem;
+}
+
+/* Chat display */
+.display {
+    flex: 10;
+    display: flex;
+    color: var(--text-primary);
+    background-color: var(--background-tertiary);
+}
+
+.display .main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.display .dp-header {
+    width: auto;
+    min-width: fit-content;
+    height: auto;
+    background-color: var(--background-primary);
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    border-radius: 0 0 0 0.75rem;
+}
+
+.display .dp-header .profile-img {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    background-color: #10ac84;
+}
+
+.display .dp-header .profile-img img {
+    width: 32px;
+    height: 32px;
+}
+
+.display .dp-header .profile-data {
+    margin: 0 1rem 0 1rem;
+}
+
+.display .dp-header .settings img {
+    height: 1rem;
+    cursor: pointer;
+}
+
+.display .dp-content {
+    overflow: auto;
+    padding: 1rem;
+    height: 100%;
+}
+
+.display .msg-block {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.display .msg-block .msg-author-img {
+    width: 2vw;
+}
+
+.display .msg-block .msg-author-img img {
+    width: inherit;
+}
+
+.display .msg-block .msg {
+    display: flex;
+    flex-direction: column;
+}
+
+.display .dp-footer {
+    padding: 1rem;
+}
+
+.display form[status="active"] {
+    display: flex;
+    margin-block-end: 0px !important;
+}
+
+.display input {
+    width: 100%;
+    height: 0.1rem;
+    padding: 1.25rem;
+    color: var(--text-primary);
+    background-color: var(--background-secondary);
+    border: none;
+    outline: none;
+}
+
+/* Server create&join panel */
+#panel {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    color: var(--text-primary);
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background-color: var(--background-secondary);
+}
+
+#panel .action {
+    display: flex;
+    margin: 1rem 0 1rem 0;
+    height: 100%;
+}
+
+#panel .group .action > div {
+    width: 100%;
+}
+
+#panel .action .selector {
+    display: flex;
+    height: 100%;
+}
+
+#panel .selector * {
+    flex: 1;
+    display: grid;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    background-color: var(--background-primary);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+#panel .selector .create {
+    margin-right: 2rem;
+}
+
+#panel .selector .join {
+    margin-left: 2rem;
+}
+
+#panel .group {
+    padding: 3rem;
+    width: 720px;
+}
+
+#panel .channel {
+    padding: 2rem;
+    width: 480px;
+}
+
+#panel:has(.channel) {
+    -webkit-border-radius: 12px !important;
+    -moz-border-radius: 12px !important;
+    border-radius: 12px !important;
+}
+
+#panel .form {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+#panel .form form {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+#panel .form span {
+    background-color: transparent;
+    font-family: philosopherRegular;
+}
+
+#panel .thumbnail {
+    flex: 1;
+    width: 100%;
+}
+
+#panel .thumbnail img {
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 0px 12px 12px 0px;
+    -moz-border-radius: 0px 12px 12px 0px;
+    border-radius: 0px 12px 12px 0px;
+}
+
+.form form * {
+    margin-top: 0.5rem;
+    color: var(--text-primary);
+    background-color: var(--background-primary);
+    font-family: philosopherRegular;
+    font-size: 16px;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none
+}
+
+.form form div {
+    padding: 0.5rem;
+    width: 50%;
+    height: 7rem;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+.form h1 {
+    text-decoration: underline;
+    text-decoration-color: orange;
+}
+
+.form h1:nth-last-child(1) {
+    text-decoration: none;
+}
+
+.form form input[type="text"] {
+    width: 50%;
+    height: 2rem;
+}
+.form form input[type="file"] {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    font-size: 24px;
+}
+
+.form form input[type="submit"] {
+    padding: 0.35rem;
+    margin-top: 0.5rem;
+    width: 25%;
+    cursor: pointer;
+    color: var(--text-primary);
+    background-color: var(--background-primary);
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.form small{
+    background-color: transparent;
+    font-family: philosopherRegular;
+}
+
+/*Channel panel*/
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px !important;
+    position: relative !important;
+}
+
+.radio-container input {
+    position: absolute;
+    margin: 0px !important;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.radio-container .radio-btn {
+    position: absolute;
+    margin: 0px;
+    top: 0;
+    left: 0;
+    right: 100%;
+    background-color: rgb(50, 50, 177);
+}
+
+.radio-container input:checked ~ .radio-btn {
+    background-color: turquoise;
+}
+
+.radio-container span {
+    display: grid;
+    position: absolute;
+    margin: 0px !important;
+    right: 1;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    background-color: transparent;
+    align-items: center;
+    text-align: center;
+}
+
+/* User settings panel */
+#panel .user-settings {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 640px;
+}
+
+#panel .settings-body {
+    flex: 10;
+    display: flex
+}
+
+#panel .data-editor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#panel .data-editor input {
+    height: 2rem;
+    padding: 1.25rem 0 1.25rem 0.5rem;
+    margin-top: 0.5rem;
+    color: var(--background-tertiary);
+    background-color: var(--background-primary);
+    font-family: philosopherRegular;
+    font-size: 16px;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none
+}
+
+#panel .settings-footer {
+    flex: 1;
+    display: grid;
+    align-content: end
+}
+
+/* Context Menu */
+
+#contextmenu[status="active"] {
+    width: 8rem;
+    padding: 1rem;
+    position: absolute;
+    z-index: 9999;
+    background-color: #c8d6e5;
+    border-radius: 3px;
+}

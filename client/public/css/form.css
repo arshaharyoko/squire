@@ -1,0 +1,104 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    background-image: url("/assets/images/banner1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+
+/* Font Families */
+@font-face {
+    font-family: "philosopherRegular";
+    src: url("/assets/fonts/philosopher/Philosopher-Regular.ttf")
+}
+
+@font-face {
+    font-family: "philosopherBold";
+    src: url("/assets/fonts/philosopher/Philosopher-Bold.ttf")
+}
+
+.container {
+    display: flex;
+    height: 100%
+}
+
+/* Landing Form */
+.land-form {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+    color: white;
+    background-color: #171010;
+    overflow: hidden
+}
+
+.land-form .logo {
+    flex: 3
+}
+
+.logo h1 {
+    text-align: center;
+    letter-spacing: 1.5px;
+    margin-top: 5rem;
+    font-family: philosopherBold;
+    font-size: 50px
+}
+
+.land-form .form-wrapper {
+    flex: 4
+}
+
+.land-form form {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 360px
+}
+
+.land-form form input {
+    padding: 1.25rem 0 1.25rem 0.5rem;
+    margin-top: 0.5rem;
+    color: #A9A9A9;
+    background-color: #281E15;
+    font-family: philosopherRegular;
+    font-size: 16px;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none
+}
+
+.land-form form small {
+    margin-top: 0.5rem;
+    color: #A9A9A9;
+    font-family: philosopherRegular
+}
+
+.land-form form small a {
+    text-decoration: none;
+    color: #38ada9;
+    font-family: philosopherRegular
+}
+
+.land-form form input[type="submit"] {
+    padding: 0.35rem;
+    margin-top: 0.5rem;
+    color: #A9A9A9;
+    background-color: #281E15;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    width: 7rem
+}
+
+.land-spacer {
+    flex: 1
+}
+
+.land-banner {
+    flex: 6
+}
